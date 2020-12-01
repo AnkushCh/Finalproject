@@ -1,0 +1,16 @@
+{% block content %}
+<section id="sidebar">
+
+    <h4 class="text-secondary">Latest posts</h4>
+ <div class="list-group">
+     {% for post in posts %}
+        <a href="{% url 'blog_post_detail' post.pk %}" class="list-group-item list-group-item-action list-group-item-info text-dark">
+            {{post}}
+        </a>
+     {% endfor %}
+ </div>
+
+
+</section>
+
+{% endblock %}

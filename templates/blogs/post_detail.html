@@ -1,0 +1,53 @@
+{% extends 'blogs/base.html' %}
+
+
+{% block content %}
+    <section id="postdetails">
+            <div class="card my-3">
+
+                <div class="card-header text-dark">{{object.title}}</a></div>
+                <div class="card-body">
+<!--                    <h4 class="card-title">{{post.author}}</h4>-->
+                    <p class="card-title">{{object.content}}</p>
+                    <p><a href="{% url 'users_blog' object.author.username %}">{{object.author}}</a></p>
+                    <p>{{object.date|date:"F d, Y"}}</p>
+<!--                    if the logged in user is the author of post then -->
+                    {% if object.author == user %}
+                    <p>
+                        <a href="{% url 'blog-post-delete' object.pk %}" class="btn btn-danger">Delete</a>
+                        <a href="{% url 'blog-post-update' object.pk %}" class="btn btn-success">Update</a>
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+    </section>
+
+    {% if object.author != user %}
+        <a href="{% url 'add_comments' pk=post.pk %}" class="btn btn-info">Comment Here</a>
+    {% else %}
+        <a href="{% url 'add_comments' pk=post.pk %}" class="btn btn-info d-none">Comment Here</a>
+
+    {% endif %}
+    {% for comment in post.comments.all %}
+        {% if user.is_authenticated or comment.approved_comment %}
+
+    <ul class="list-group list-group-flush pt-3"></ul>
+        <div class="comment pb-2 list-group-item">
+            <div class="date pb-2">{{comment.created_date}}
+            {% if not comment.approved_comment %}
+                <a class="btn btn-default" href="{% url 'comment_remove' pk=comment.pk %}"><span class="glyphicon glyphicon-remove">Remove</span></a>
+                <a class="btn btn-default" href="{% url 'comment_approve' pk=comment.pk %}"><span class="glyphicon glyphicon-ok">Approve</span></a>
+                <a class="btn btn-default" href="{% url 'comment_edit' pk=comment.pk %}"><span class="glyphicon glyphicon-edit">Edit</span></a>
+            {% endif %}
+            </div>
+            <strong>{{comment.author}}</strong>
+            <p>{{comment.text}}</p>
+        {% endif %}
+
+        </div>
+    </ul>
+    {% empty %}
+        <p class="py-3">No Comments :(</p>
+    {% endfor %}
+
+{% endblock %}

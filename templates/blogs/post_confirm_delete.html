@@ -1,0 +1,19 @@
+{% extends 'blogs/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <section id="logout-section" style="background: gainsboro" class="p-3 mt-3">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            {{form|crispy}}
+        </div>
+        <div class=form-group>
+            <span>Are You Sure Want to delete this post? </span>
+            <button type="submit" class="btn btn-outline-danger ml-2">Delete</button>
+            <a href="{% url 'blog_post_detail' object.id %}" class="btn btn-outline-secondary ml-2">Cancel</a>
+        </div>
+    </form>
+        </section>
+
+{% endblock %}
