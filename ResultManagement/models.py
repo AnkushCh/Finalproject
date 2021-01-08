@@ -11,11 +11,6 @@ class Result(models.Model):
     marks = models.FloatField(null=True, default=0)
     attachment = models.FileField(null=True, blank=True, upload_to='exam/returns')
 
-    # @property
-    # def attachment_url(self):
-    #     if self.attachment and hasattr(self.attachment, 'url'):
-    #         return self.attachment.url
-
     def __str__(self):
         return str(self.examinee.user.username + " " + self.exam.exam_title + " " + str(self.marks))
 

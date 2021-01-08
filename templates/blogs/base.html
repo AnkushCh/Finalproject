@@ -28,14 +28,14 @@
                         {% if user.is_authenticated %}
 
                         <a class="nav-item nav-link" href="{% url 'blog' %}"> Home </a>
-                        <a class="nav-item nav-link" href="{% url 'blog-post-create' %}"> New Post </a>
+                        <a class="nav-item nav-link" href="{% url 'blog-post-create' %}">Create New Post </a>
                         <a class="nav-item nav-link" href="/profile"> Profile </a>
                         {% endif %} 
                         <div class="nav-item nav-link">
                             
                                 <form class="form-inline mr-4" method="GET" action="">
                                     <input class="form-control mr-sm-2" name="q" type="search" placeholder="search posts" aria-label="Search" value="{{ request.GET.q }}">
-                                     <input type="submit" value="Search" class="btn btn-outline-white btn-md my-0 ml-sm-2">
+                                     <input type="submit" value="Search" style="font-size: 35px class="btn btn-outline-white btn-md my-0 ml-sm-2">
                                 </form>
                                
                      </div>
@@ -47,6 +47,10 @@
         </nav>
     </section>
     </header>
+</div>
+<br>
+<br>
+
     <main role="main" class="container" style="min-height:100vh">
       <div class="row py-5 my-4">
         <div class="col-md-8">

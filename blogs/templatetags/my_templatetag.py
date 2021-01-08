@@ -5,7 +5,7 @@ from blogs.models import Post
 register = template.Library()
 @register.inclusion_tag('blogs/sidebars.html')
 def sidebar_results():
-    posts = Post.objects.all().order_by('-date')[:5]
+    posts = Post.objects.all().order_by('-date')[:10]
     # context = {
     #     'new_post': post
     # }
