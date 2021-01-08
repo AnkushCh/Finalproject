@@ -1,14 +1,14 @@
-# Online Quiz Platform
-![Django CI](https://github.com/ssoad/OnlineQuizPlatform/workflows/Django%20CI/badge.svg)
+# Online Exam Platform
+
 ##### Requiremnts : 
 * Python3 
-* Pycharm 
+* VS Code
 * Github Desktop or Git 
 
 ##### Usage : 
 
-               git clone https://github.com/ssoad/OnlineQuizPlatform.git
-               cd OnlineQuizPlatform
+               git clone https://github.com/AnkushCh/Finalproject.git
+               cd Finalproject
                pip install -r requirements.txt
                python manage.py migrate
                python manage.py runserver
@@ -38,6 +38,3 @@ Now go to **127.0.0.1:8000**  from your browser
 * Ranking System (Exam wise)
 * Full Exam Results Log (Examinee & Examiner)
 
-
-##### TODO :
-* Result to PDF (Download)
